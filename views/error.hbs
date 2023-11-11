@@ -1,0 +1,24 @@
+<link href="/css/error.css" rel="stylesheet" />
+
+<div class="container-error container-card">
+  <div class="card-form">
+    <img src="/img/error.png" alt="Error Image" class="card-icon">
+    <h1>{{message}}</h1>
+    <p>{{description}}</p>
+    <div class="spacer"></div>
+    <div class="flex justify-between">
+      {{#if login}}
+      <a class="btn-card" href="/login">
+        Iniciar Sesion
+      </a>
+      <a class="btn-card" href="/register">
+        Crear Cuenta
+      </a>
+      {{else}}
+      <a class="btn-card" href="/">
+        Ir a Inicio
+      </a>
+      {{/if}}
+    </div>
+  </div>
+</div>

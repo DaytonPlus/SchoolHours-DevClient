@@ -1,0 +1,172 @@
+<div class="container-card">
+  <div class="card-header">
+
+    <form class="card-form" id="updateUserForm">
+      <div class="card-group">
+        <label for="username">
+          Nombre de Usuario
+        </label>
+        <input id="username" type="text" placeholder="Username">
+      </div>
+
+      <div class="card-group">
+        <label for="email">
+          Correo (Email)
+        </label>
+        <input id="email" type="email" name="email" placeholder="example@gmail.com">
+      </div>
+
+      <div class="card-group">
+        <label for="password">
+          Contraseña
+        </label>
+        <input id="password" type="password" required="" placeholder="******************">
+      </div>
+
+      <div class="card-group">
+        <label for="new_password">
+          Nueva Contraseña
+        </label>
+        <input id="new_password" type="password" placeholder="******************">
+      </div>
+
+      <div class="card-group">
+        <label for="faculty">
+          Facultad
+        </label>
+        <input id="faculty" type="number">
+      </div>
+
+      <div class="card-group">
+        <label for="group">
+          Grupo
+        </label>
+        <input id="group" type="number">
+      </div>
+
+      <div class="card-group">
+        <label for="year">
+          Año
+        </label>
+        <input id="year" type="number">
+      </div>
+
+      <div class="card-footer">
+        <button class="btn-card" type="submit">
+          Entrar
+        </button>
+        <button id="btn-delete" class="btn-card-r" type="button">
+          Eliminar
+        </button>
+      </div>
+      <div id="out" class="out-card"></div>
+    </form>
+  </div>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      let $username = $("#username");
+      let $password = $("#password");
+      let $new_password = $("#new_password");
+      let $email = $("#email");
+      let $faculty = $("#faculty");
+      let $group = $("#group");
+      let $year = $("#year");
+      let $out = $("#out");
+
+      {{#if offline}} /*  Offline Mode  */ {{else}}
+
+      $username.val(userdata.username);
+      $email.val(userdata.email);
+      $faculty.val(userdata.faculty);
+      $year.val(userdata.year);
+      $group.val(userdata.group);
+
+      $("#btn-delete").click(() => {
+        if($password.val().trim() === '') {
+          return $out.html(`<div class="out-error">Contraseña invalida!</div>`);
+        }
+        let ok = confirm("Confirma para enviar la solicitud de eliminar tu cuenta!");
+        if(ok) {
+          $.ajax({
+          type: "POST",
+          url: "http://localhost:8001/api/v1/users/delete-user",
+          data: JSON.stringify({
+            "token": userdata.token,
+            "password": $password.val(),
+          }),
+          dataType: "json",
+          contentType: "application/json; charset=utf-8",
+          success: function(res) {
+            if (res.message) {
+              $out.html(`<div class="out-info">${res.message}</div>`);
+            } else {
+              $out.html(`<div class="out-info">Removed whitout whit out information!</div>`);
+            }
+
+              userdata = {};
+              window.localStorage.removeItem("userdata");
+              window.setTimeout(()=> {
+                window.location.href = "/";
+              }, 1000);
+
+          },
+          error: function(res) {
+            if (res.responseJSON.message) {
+              $out.html(`<div class="out-error">${res.responseJSON.message}</div>`);
+            } else {
+              $out.html(`<div class="out-error">Error, not server response!</div>`);
+            }
+          }
+        });
+        }
+      });
+
+      {{/if}}
+      
+      
+      $("#updateUserForm").submit(function(event) {
+        event.preventDefault();
+
+        {{#if offline}} <!-- Offline Mode --> {{else}}
+
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:8001/api/v1/users/update-user",
+          data: JSON.stringify({
+            "token": userdata.token,
+            "username": $username.val(),
+            "password": $password.val(),
+            "new_password": $new_password.val(),
+            "email": $email.val(),
+            "faculty": $faculty.val(),
+            "group": $group.val(),
+            "year": $year.val(),
+          }),
+          dataType: "json",
+          contentType: "application/json; charset=utf-8",
+          success: function(res) {
+            if (res.message) {
+              $out.html(`<div class="out-info">${res.message}</div>`);
+              window.localStorage.setItem("userdata", JSON.stringify(res.user));
+              window.setTimeout(()=> {
+                window.location.href = "/profile";
+              }, 1000);
+            } else {
+              $out.html(`<div class="out-info">Logged whit out information!</div>`);
+            }
+          },
+          error: function(res) {
+            if (res.responseJSON.message) {
+              $out.html(`<div class="out-error">${res.responseJSON.message}</div>`);
+            } else {
+              $out.html(`<div class="out-error">Error, not server response!</div>`);
+            }
+          }
+        });
+
+        {{/if}}
+
+      });
+    });
+  </script>
