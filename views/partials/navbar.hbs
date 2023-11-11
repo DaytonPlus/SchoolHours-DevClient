@@ -1,0 +1,134 @@
+{{#if navbar}}
+<nav id="navbar" class="navbar">
+  <div class="main-menu">
+    <div class="div-base">
+      <div class="group-1">
+        <div class="user">
+          <img src="/img/logo.png" alt="You">
+        </div>
+        
+        <div class="menu-pc">
+          <div class="menu-list">
+            <a href="/"{{#if home}} class="active"{{/if}}>Inicio</a>
+            <a href="/admin"{{#if admin}} class="active"{{/if}}>User Control</a>
+            <a href="/hours"{{#if hours}} class="active"{{/if}}>Horarios</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="menu-pc">
+        <div class="group-1">
+          <button type="button" class="btn-outline">
+            <span class="span"></span>
+            <span class="span2">View notifications</span>
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+            </svg>
+          </button>
+
+          <!-- Profile dropdown -->
+          <div class="profile-menu">
+            <div>
+              <button id="toogleUserMenu" type="button" class="btn-outline btn-outline2" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <span class="span"></span>
+                <span class="span2">Open user menu</span>
+                <img src="/img/avatar.jpeg" alt="">
+              </button>
+            </div>
+
+            <div id="user-menu" style="display: none;" class="user-menu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+              <!-- Active: "bg-gray-100", Not Active: "" -->
+              <p role="menuitem" tabindex="-1" id="_username">
+                You
+              </p>
+              <hr />
+            <a href="/profile" role="menuitem" tabindex="-1">Settings</a>
+            <a href="/logeout" role="menuitem" tabindex="-1">Sign out</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="controls">
+      <!-- Mobile menu button -->
+      <button id="navbarToggle" type="button" aria-controls="mobile-menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Mobile menu, show/hide based on menu state. -->
+  <div class="menu-mobile" id="mobile-menu" style="display: none;">
+    <div class="menu-list">
+      <a href="/"{{#if home}} class="active"{{/if}}>Home</a>
+      <a href="/admin"{{#if admin}} class="active"{{/if}}>User Control</a>
+      <a href="/hours"{{#if hours}} class="active"{{/if}}>Hours</a>
+    </div>
+    
+    <div class="div-base">
+      <div class="group-1">
+        <div class="img-base">
+          <img src="/img/avatar.jpeg" alt="">
+        </div>
+        <div class="user-info">
+          <div class="title" id="_username">...</div>
+          <div id="_email">...</div>
+        </div>
+        <button type="button" class="btn-notification">
+          <span class="sp-1"></span>
+          <span class="subtitle">View notifications</span>
+          <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+          </svg>
+        </button>
+      </div>
+      <div class="group-2">
+        <a href="/profile">Settings</a>
+        <a href="/logeout">Sign out</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div id="_loader" class="container-loader">
+ <img src="/img/logo.png" />
+ <h2>Loading...</h2>
+</div>
+
+<script src="/logged.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#navbarToggle").click(function() {
+      $("#mobile-menu").toggle(200);
+    });
+    $("#toogleUserMenu").click(function() {
+      $("#user-menu").toggle(100);
+    });
+
+    {{#if offline}}
+    /* Offline Mode */
+     $('[id="_username"]').html("Offline");
+     $('[id="_email"]').html("offline@dev.user");
+     $("#_loader").hide();
+    {{else}}
+    logged((res, error) => {
+      if (error) {
+        localStorage.removeItem("userdata");
+        window.location.href = `/error?login=1&msg=${res.message}`;
+      } else {
+        $('[id="_username"]').html(userdata.username);
+        $('[id="_email"]').html(userdata.email);
+        $("#_loader").hide();
+      }
+    });
+
+  {{/if}}
+
+  });
+</script>
+
+{{/if}}
