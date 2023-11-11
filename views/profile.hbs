@@ -90,7 +90,7 @@
         if(ok) {
           $.ajax({
           type: "POST",
-          url: "http://localhost:8001/api/v1/users/delete-user",
+          url: "{{server_addr}}/api/v1/users/delete-user",
           data: JSON.stringify({
             "token": userdata.token,
             "password": $password.val(),
@@ -132,7 +132,7 @@
 
         $.ajax({
           type: "POST",
-          url: "http://localhost:8001/api/v1/users/update-user",
+          url: "{{server_addr}}/api/v1/users/update-user",
           data: JSON.stringify({
             "token": userdata.token,
             "username": $username.val(),
