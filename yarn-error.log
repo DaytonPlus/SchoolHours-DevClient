@@ -1,0 +1,51 @@
+Arguments: 
+  /data/data/com.termux/files/usr/bin/node /data/data/com.termux/files/usr/bin/yarn add file-compare
+
+PATH: 
+  /data/data/com.termux/files/usr/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  20.2.0
+
+Platform: 
+  android arm
+
+Trace: 
+  Error: EACCES: permission denied, symlink '../../../browserslist/cli.js' -> '/storage/emulated/0/AppProjects/Horario/Horario-Backend-Client/node_modules/autoprefixer/node_modules/.bin/browserslist'
+
+npm manifest: 
+  {
+    "name": "horario-backend-client",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/index.js",
+    "type": "module",
+    "scripts": {
+      "dev": "node .",
+      "start": "node ."
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "4.18.2",
+        "express-handlebars": "7.1.2",
+        "http-errors": "2.0.0",
+        "morgan": "1.10.0",
+        "socket.io": "4.7.2",
+        "tailwindcss": "3.3.5",
+        "postcss": "8.4.31",
+        "autoprefixer": "10.4.16",
+        "chalk": "5.3.0",
+        "file-compare": "*",
+     }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
