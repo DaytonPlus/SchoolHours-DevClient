@@ -63,7 +63,7 @@
 
       $.ajax({
         type: "POST",
-        url: "http://localhost:8001/api/v1/users/create-user",
+        url: "{{server_addr}}/api/v1/users/create-user",
         data: JSON.stringify({
           "username": $username.val(),
           "password": $password.val(),
