@@ -1,7 +1,7 @@
 {
   "name": "schoolhours-devclient",
   "version": "1.0.0",
-  "description": "",
+  "description": "Aplicación para depurar y testear el programa principal del proyecto SchoolHours (Horario)",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
