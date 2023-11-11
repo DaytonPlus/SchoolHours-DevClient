@@ -1,0 +1,19 @@
+.container-error {
+  @apply container mx-auto py-16 px-4;
+}
+
+.card-error {
+  @apply bg-white rounded-lg shadow-lg p-8 text-center;
+}
+
+.container-error .card-icon {
+  @apply w-64 mx-auto mb-6;
+}
+
+.container-error h1 {
+  @apply text-3xl font-bold mb-4;
+}
+
+.container-error p {
+  @apply text-xl;
+}
