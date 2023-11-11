@@ -45,6 +45,7 @@ async function createServer() {
     extname: '.hbs',
     helpers: {
       title: app.config.title,
+      server_addr: `http://${app.config.backend.host || app.config.host || "0.0.0.0"}:${app.config.backend.port || app.config.port || 8001}`,
       //offline: app.config.offline
     }
   }));
