@@ -1,0 +1,6 @@
+/* Dark Theme */
+
+html {
+ background: #181F27;
+ @apply text-gray-100;
+}

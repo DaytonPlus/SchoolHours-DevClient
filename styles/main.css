@@ -1,0 +1,348 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+.bg-color-custom {
+    background: #181f27;
+}
+
+body {
+  @apply h-full text-white;
+}
+
+.main {
+  @apply mx-auto max-w-7xl py-6 sm:px-6 lg:px-8;
+}
+
+.full-container {
+  @apply min-h-full;
+}
+
+@font-face {
+    font-family: "Nunito Regular";
+    src: url("/fonts/Nunito Regular 400.ttf") format("truetype");
+}
+
+html, body, main {
+    font-family: "Nunito Regular";
+}
+
+.card-form {
+  @apply mb-4 w-full;
+}
+
+.card-form label {
+  @apply block text-gray-200 text-sm font-bold mb-2;
+}
+
+.card-form input {
+  @apply outline-none bg-gray-800 shadow appearance-none border border-gray-700 rounded w-full py-2 px-3 text-gray-300 mb-3 leading-tight;
+  transition: 0.3s;
+}
+
+.card-form input:focus,
+.card-form input:hover {
+  @apply shadow outline-none text-gray-200 border-gray-400;
+}
+
+.card-form .spacer {
+  @apply mt-8;
+}
+
+.card-form .card-group {
+  margin-bottom: 1.1rem;
+}
+
+.container-card {
+  @apply w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl m-auto bg-gray-800 p-4 rounded-lg shadow-md;
+}
+
+.container-card .card-header {
+  @apply flex justify-between;
+}
+
+.container-card .card-header h1 {
+  @apply text-2xl font-semibold text-gray-100 mb-6 flex;
+}
+
+.container-card .btn-card {
+  @apply bg-blue-500 text-white text-center font-bold py-2 px-2 rounded;
+}
+
+.container-card .btn-card:hover {
+  @apply hover:bg-blue-700;
+}
+
+.container-card .btn-card:focus {
+  @apply outline-none;
+}
+
+.container-card .btn-card-r {
+  @apply bg-red-500 text-white text-center font-bold py-2 px-2 rounded;
+}
+
+.container-card .btn-card-r:hover {
+  @apply hover:bg-red-700;
+}
+
+.container-card .btn-card-r:focus {
+  @apply outline-none;
+}
+
+
+
+.container-card .btn-link {
+  @apply inline-block align-baseline font-bold text-sm text-blue-500;
+}
+
+.container-card .btn-link:hover {
+  @apply text-blue-800;
+}
+
+.container-card .out-card {
+  @apply flex items-center justify-between text-center mt-3 h-12;
+}
+
+.container-card .out-card .out-error {
+  @apply text-red-400 p-1;
+}
+
+.container-card .out-card .out-info {
+  @apply text-blue-400 p-1;
+}
+
+.card-form .card-footer {
+  @apply flex items-center justify-between;
+}
+
+.container-footer {
+  @apply bg-blue-500 text-white py-6 px-4;
+}
+
+.container-footer div {
+  @apply container mx-auto;
+}
+
+.container-footer div p {
+  @apply text-center;
+}
+
+.navbar {
+  @apply bg-gray-800;
+}
+
+.navbar .main-menu {
+  @apply: mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.navbar .main-menu .div-base {
+  @apply flex h-16 items-center justify-between;
+}
+
+.navbar .main-menu .group-1 {
+  @apply flex items-center;
+}
+
+.navbar .main-menu .group-1 .user {
+  @apply flex-shrink-0;
+}
+
+.navbar .main-menu .group-1 .user img {
+  @apply h-8 w-8;
+}
+
+.navbar .menu-mobile {
+  @apply md:hidden hidden;
+}
+
+.navbar .menu-pc {
+  @apply hidden md:block;
+}
+
+.navbar .menu-pc .group-1 {
+  @apply ml-4 flex items-center md:ml-6;
+}
+
+.navbar .menu-pc .group-1 .btn-outline {
+  @apply relative rounded-full bg-gray-800 p-1 text-gray-400;
+}
+
+.navbar .menu-pc .group-1 .btn-outline2 {
+  @apply flex max-w-xs items-center text-sm;
+}
+
+.navbar .menu-pc .group-1 .btn-outline:hover {
+  @apply hover:text-white;
+}
+.navbar .menu-pc .group-1 .btn-outline:focus {
+  @apply outline-none ring-2 ring-white ring-offset-2 ring-offset-gray-800;
+}
+
+.navbar .menu-pc .group-1 .btn-outline .span {
+  @apply absolute -inset-1.5;
+}
+
+.navbar .menu-pc .group-1 .btn-outline .span2 {
+  @apply sr-only;
+}
+
+.navbar .menu-pc .group-1 .btn-outline svg {
+  @apply h-6 w-6;
+}
+
+.navbar .menu-pc .group-1 .btn-outline img {
+  @apply h-8 w-8 rounded-full;
+}
+
+.navbar .menu-pc .group-1 .profile-menu {
+  @apply relative ml-3;
+}
+
+.navbar .menu-pc .group-1 .user-menu {
+  @apply absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-gray-800 py-1 shadow-lg ring-1 ring-black ring-opacity-5;
+}
+
+.navbar .menu-pc .group-1 .user-menu:focus {
+  @apply outline-none;
+}
+
+.navbar .menu-pc .group-1 .user-menu p {
+  @apply block px-4 py-2 text-sm text-gray-200;
+}
+
+.navbar .menu-pc .group-1 .user-menu a {
+  @apply block px-4 py-2 text-sm text-gray-200;
+}
+
+.navbar .menu-mobile .menu-list {
+  @apply space-y-1 px-2 pb-3 pt-2 sm:px-3;
+}
+
+.navbar .menu-mobile .menu-list a,
+.navbar .menu-pc .menu-list a {
+  @apply text-gray-300 block rounded-md px-3 py-2 text-base font-medium;
+}
+
+.navbar .menu-pc .menu-list {
+  @apply ml-10 flex items-baseline space-x-4;
+}
+
+.navbar .menu-pc .menu-list a {
+  @apply text-sm;
+}
+
+.navbar .menu-mobile .menu-list a:hover,
+.navbar .menu-pc .menu-list a:hover {
+  @apply bg-gray-700 text-white;
+}
+
+.navbar .menu-mobile .menu-list .active,
+.navbar .menu-pc .menu-list .active {
+  @apply bg-gray-900 text-white;
+}
+
+.navbar .menu-mobile .div-base {
+  @apply border-t border-gray-700 pb-3 pt-4;
+}
+
+.navbar .menu-mobile .div-base .group-1 {
+  @apply flex items-center px-5;
+}
+
+.navbar .menu-mobile .div-base .group-1 .img-base {
+  @apply flex-shrink-0;
+}
+
+.navbar .menu-mobile .div-base .group-1 .img-base img {
+  @apply h-10 w-10 rounded-full;
+}
+
+.navbar .menu-mobile .div-base .group-1 .user-info {
+  @apply ml-3;
+}
+
+.navbar .menu-mobile .div-base .group-1 .user-info div {
+  @apply font-medium leading-none text-gray-400 text-sm;
+}
+
+.navbar .menu-mobile .div-base .group-1 .user-info .title {
+  @apply text-base text-white;
+}
+
+.navbar .menu-mobile .div-base .group-1 .btn-notification {
+  @apply relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400;
+}
+
+.navbar .menu-mobile .div-base .group-1 .btn-notification:hover {
+  @apply text-white;
+}
+
+.navbar .menu-mobile .div-base .group-1 .btn-notification:focus {
+  @apply outline-none ring-2 ring-white ring-offset-2 ring-offset-gray-800;
+}
+
+.navbar .menu-mobile .div-base .group-1 .btn-notification .sp-1 {
+  @apply absolute -inset-1.5;
+}
+
+.navbar .menu-mobile .div-base .group-1 .btn-notification .subtitle {
+  @apply sr-only;
+}
+
+.navbar .menu-mobile .div-base .group-1 .btn-notification svg {
+  @apply h-6 w-6;
+}
+
+.navbar .menu-mobile .div-base .group-2 {
+  @apply mt-3 space-y-1 px-2;
+}
+
+.navbar .menu-mobile .div-base .group-2 a {
+  @apply block rounded-md px-3 py-2 text-base font-medium text-gray-400;
+}
+
+.navbar .menu-mobile .div-base .group-2 a:hover {
+  @apply bg-gray-700 text-white;
+}
+
+.navbar .main-menu .controls {
+  @apply flex md:hidden mr-4;
+}
+
+.navbar .main-menu .controls button {
+  @apply relative inline-flex items-center justify-center rounded-md bg-gray-700 p-2 text-gray-400;
+}
+
+.navbar .main-menu .controls button svg {
+  @apply block;
+}
+
+.navbar .main-menu .controls button:hover {
+  @apply bg-gray-700 text-white;
+}
+
+.navbar .main-menu .controls button:focus {
+  @apply outline-none ring-2 ring-white ring-offset-2 ring-offset-gray-800;
+}
+
+.container-loader {
+  background: #181f27;
+  @apply fixed inset-0 flex items-center justify-center z-50;
+}
+
+.container-loader h2 {
+  @apply text-xl text-gray-300;
+}
+
+.container-loader img {
+  @apply h-16;
+}
+
+.full-screen-msg {
+  @apply w-screen h-screen flex items-center justify-center;
+}
+
+.full-screen-msg .msg-error {
+  @apply bg-red-500 text-white p-8 rounded-md;
+}
