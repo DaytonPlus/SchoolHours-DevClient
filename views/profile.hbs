@@ -90,7 +90,7 @@
         if(ok) {
           $.ajax({
           type: "DELETE",
-          url: "{{server_addr}}/api/v1/users/delete-user",
+          url: "{{server_addr}}/api/v1/users/delete",
           data: JSON.stringify({
             "token": userdata.token,
             "password": $password.val(),
@@ -135,7 +135,7 @@
 
         $.ajax({
           type: "PUT",
-          url: "{{server_addr}}/api/v1/users/update-user",
+          url: "{{server_addr}}/api/v1/users/update",
           data: JSON.stringify({
             "token": userdata.token,
             "username": $username.val(),
