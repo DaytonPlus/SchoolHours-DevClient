@@ -63,7 +63,7 @@
     </form>
   </div>
 
-  <script type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function() {
       let $username = $("#username");
       let $password = $("#password");
@@ -89,7 +89,7 @@
         let ok = confirm("Confirma para enviar la solicitud de eliminar tu cuenta!");
         if(ok) {
           $.ajax({
-          type: "POST",
+          type: "DELETE",
           url: "{{server_addr}}/api/v1/users/delete-user",
           data: JSON.stringify({
             "token": userdata.token,
@@ -97,6 +97,9 @@
           }),
           dataType: "json",
           contentType: "application/json; charset=utf-8",
+          beforeSend: function(xhr) {
+            xhr.setRequestHeader('Authorization', userdata.token);
+          },
           success: function(res) {
             if (res.message) {
               $out.html(`<div class="out-info">${res.message}</div>`);
@@ -131,7 +134,7 @@
         {{#if offline}} <!-- Offline Mode --> {{else}}
 
         $.ajax({
-          type: "POST",
+          type: "PUT",
           url: "{{server_addr}}/api/v1/users/update-user",
           data: JSON.stringify({
             "token": userdata.token,
@@ -145,6 +148,9 @@
           }),
           dataType: "json",
           contentType: "application/json; charset=utf-8",
+          beforeSend: function(xhr) {
+             xhr.setRequestHeader('Authorization', userdata.token);
+          },
           success: function(res) {
             if (res.message) {
               $out.html(`<div class="out-info">${res.message}</div>`);
@@ -169,4 +175,5 @@
 
       });
     });
-  </script>
+</script>
+        
